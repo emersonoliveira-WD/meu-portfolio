@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import perfilImg from './assets/perfil.png'; 
 
 const projetos = [
   {
@@ -99,31 +100,79 @@ function App() {
       </nav>
 
       {/* TELA INICIAL (HERO) */}
-      <section id="inicio" className="h-screen w-full flex flex-col justify-center items-center relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 snap-center snap-always">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center max-w-4xl px-4 z-10"
-        >
-          <span className="text-blue-400 font-semibold tracking-widest uppercase mb-4 block text-xl">Engenheiro de Computação</span>
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-8 tracking-tight drop-shadow-lg">
-            Emerson <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Oliveira</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-3xl mx-auto">
-            Desenvolvimento de Software, Automação em Python, Integração de APIs e Soluções de Infraestrutura de TI.
-          </p>
-        </motion.div>
+      <section id="inicio" className="h-screen w-full flex flex-col justify-center items-center relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 snap-center snap-always px-8 md:px-16">
+        
+        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center z-10 pt-16">
+          
+          {/* Coluna da Esquerda: Apresentação */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-left"
+          >
+            <span className="text-blue-400 font-semibold tracking-widest uppercase mb-4 block text-xl">Engenheiro de Computação[cite: 1]</span>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-lg">
+              Emerson <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Oliveira</span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 mb-8 leading-relaxed">
+              Desenvolvimento de Software, Automação em Python, Integração de APIs e Soluções de Infraestrutura de TI[cite: 1].
+            </p>
+            
+            <div className="flex gap-4">
+              <a 
+                href="#projetos" 
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl transition-all font-medium shadow-[0_0_15px_rgba(37,99,235,0.4)]"
+              >
+                Ver Projetos
+              </a>
+              <a 
+                href="#contato" 
+                className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl transition-all font-medium"
+              >
+                Contato
+              </a>
+            </div>
+          </motion.div>
 
+          {/* Coluna da Direita: Foto com Moldura e Animação de Flutuação */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center items-center"
+          >
+            {/* Container com Animação Continuada de Flutuação (Subir/Descer) */}
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+              className="relative group cursor-pointer"
+            >
+              {/* Moldura Externa com Efeito Glow (Brilho que reage ao passar o mouse) */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              
+              {/* Container Glassmorphism com Borda Neon */}
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full p-2 bg-slate-900/80 border-2 border-blue-400/50 backdrop-blur-md overflow-hidden shadow-2xl flex items-center justify-center">
+                <img 
+                  src={perfilImg} 
+                  alt="Emerson Oliveira" 
+                  className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+        </div>
+
+        {/* Seta para rolar para baixo */}
         <motion.a 
           href="#projetos"
-          className="absolute bottom-12 flex flex-col items-center gap-3 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+          className="absolute bottom-8 flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          <span className="text-lg tracking-widest uppercase drop-shadow-md">Role para explorar</span>
-          <motion.div animate={{ y: [0, 15, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}>
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}>
             <svg className="w-8 h-8 text-blue-400 drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
