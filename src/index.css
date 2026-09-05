@@ -2,7 +2,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory; /* Força o alinhamento por blocos */
+}
+
+/* Aplica o alinhamento por blocos apenas em telas de desktop (min-width: 768px) */
+@media (min-width: 768px) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
 }
 
 body {
