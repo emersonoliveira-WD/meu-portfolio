@@ -1,3 +1,6 @@
+Pequeno projeto usando React e o GitHub Pages para exibir algumas informações.
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
